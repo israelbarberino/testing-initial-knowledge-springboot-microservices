@@ -25,9 +25,11 @@ public class CarController {
 
     @PostMapping("/post")
     public ResponseEntity<CarDTOResponse> saveCar(@RequestBody @Valid CarDTORequest carDTORequest) {
+        CarService.carValidation(carDTORequest);
         CarDTOResponse carDTOResponse = carService.saveCar(carDTORequest);
         return ResponseEntity.ok(carDTOResponse);
     }
+
 
     @GetMapping("/get/{idChassi}")
     public ResponseEntity<CarDTOResponse> getById(@PathVariable Long idChassi){
