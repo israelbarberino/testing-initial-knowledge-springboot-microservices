@@ -10,13 +10,8 @@ import lombok.NoArgsConstructor;
 public class CarDTOResponse {
 
     private Long idChassi ;
-
     private String name;
-
     private String brand;
-
     private String color;
-
     private String fabricationYear;
-
 }

@@ -6,7 +6,6 @@ public class CarNotFoundException extends RuntimeException {
 
     public CarNotFoundException(String s) {
         super((String) null);
-        this.errorMessage = errorMessage;
     }
 
     public String getErrorMessage() {
