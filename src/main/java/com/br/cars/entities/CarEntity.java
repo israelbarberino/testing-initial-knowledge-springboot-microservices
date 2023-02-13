@@ -11,7 +11,9 @@ public class CarEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @Convert(converter = IdChassiGenerator.class)        // Classe de geração de ID, porém não consigo chama-la
     private Long idChassi;
+
     @Column(name = "name")
     private String name;
     @Column(name = "brand")

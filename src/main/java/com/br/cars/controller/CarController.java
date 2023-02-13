@@ -8,6 +8,7 @@ import com.br.cars.repository.CarRepository;
 import com.br.cars.service.CarService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,17 +26,22 @@ public class CarController {
 
     @PostMapping("/post")
     public ResponseEntity<CarDTOResponse> saveCar(@RequestBody @Valid CarDTORequest carDTORequest) {
-        CarService.carValidation(carDTORequest);
+        CarService.fieldValidation(carDTORequest);
+        CarService.brandValidation(carDTORequest);
         CarDTOResponse carDTOResponse = carService.saveCar(carDTORequest);
         return ResponseEntity.ok(carDTOResponse);
     }
 
-
     @GetMapping("/get/{idChassi}")
-    public ResponseEntity<CarDTOResponse> getById(@PathVariable Long idChassi){
-        CarEntity carEntity = carRepository.findById(idChassi).orElseThrow(()
-                -> new CarNotFoundException("Car Chassi number: " + idChassi + " please retype and try again."));
-        CarDTOResponse carDTOResponse = modelMapper.map(carEntity, CarDTOResponse.class);
-        return ResponseEntity.ok(carDTOResponse);
+    public Object getById(@PathVariable Long idChassi){
+        try {
+            CarEntity carEntity = carRepository.findById(idChassi).orElseThrow(()
+                    -> new CarNotFoundException("idChassi not found."));
+            CarDTOResponse carDTOResponse = modelMapper.map(carEntity, CarDTOResponse.class);
+            return ResponseEntity.ok(carDTOResponse);
+        } catch (CarNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
     }
+
 }
