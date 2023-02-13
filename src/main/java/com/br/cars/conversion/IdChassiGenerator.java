@@ -4,8 +4,11 @@ import javax.persistence.AttributeConverter;
 import java.util.logging.Logger;
 
 public class IdChassiGenerator implements AttributeConverter<Long, String> {
+
+    //LOGGER PARA TENTAR VER O PQ NÃO ESSE METODO NÃO ESTA FUNCIONANDO
     private static final Logger logger = Logger.getLogger(IdChassiGenerator.class.getName());
 
+    //METODOS DE CONVERSÃO
     @Override
     public String convertToDatabaseColumn(Long idChassi) {
         logger.info("Convertendo idChassi para String: " + idChassi);

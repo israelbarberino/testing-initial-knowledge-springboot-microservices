@@ -24,6 +24,7 @@ public class CarController {
     @Autowired
     private ModelMapper modelMapper;
 
+    //METODO PARA SALVAR
     @PostMapping("/post")
     public ResponseEntity<CarDTOResponse> saveCar(@RequestBody @Valid CarDTORequest carDTORequest) {
         CarService.fieldValidation(carDTORequest);
@@ -32,6 +33,7 @@ public class CarController {
         return ResponseEntity.ok(carDTOResponse);
     }
 
+    //METODO PARA RETORNAR UM DADO DA BASE
     @GetMapping("/get/{idChassi}")
     public Object getById(@PathVariable Long idChassi){
         try {
