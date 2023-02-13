@@ -6,9 +6,9 @@
 
 #### I hope you have fun!
 
-##### >Task management tool: Trello
-##### > Database management: DBeaver
-##### > API testing and implementation: Postman
-##### > IDE used: IntelliJ IDEA
-##### > Programming language: Java
-##### > Framework: Springboot
+##### * Task management tool: Trello
+##### * Database management: DBeaver
+##### * API testing and implementation: Postman
+##### * IDE used: IntelliJ IDEA
+##### * Programming language: Java
+##### * Framework: Springboot
